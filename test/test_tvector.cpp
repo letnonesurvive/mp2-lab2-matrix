@@ -1,4 +1,4 @@
-#include "utmatrix.h"
+п»ї#include "utmatrix.h"
 
 #include <gtest.h>
 
@@ -37,7 +37,7 @@ TEST(TVector, copied_vector_is_equal_to_source_one)
 	EXPECT_EQ(v1, v2);
 }
 
-TEST(TVector, copied_vector_has_its_own_memory)//хз, это не точно
+TEST(TVector, copied_vector_has_its_own_memory)//С…Р·, СЌС‚Рѕ РЅРµ С‚РѕС‡РЅРѕ
 {
 	TVector<int> v1(10);
 	v1[5] = 5;
@@ -113,7 +113,7 @@ TEST(TVector, can_assign_vectors_of_different_size)
 	EXPECT_EQ(v1, v2);
 }
 
-TEST(TVector, compare_equal_vectors_return_true)//сам написал бля проверяй
+TEST(TVector, compare_equal_vectors_return_true)//СЃР°Рј РЅР°РїРёСЃР°Р» Р±Р»СЏ РїСЂРѕРІРµСЂСЏР№
 {
 	TVector<int> tmp1(4), tmp2(4);
 	tmp1[0] = 5;

@@ -1,4 +1,4 @@
-#include "utmatrix.h"
+п»ї#include "utmatrix.h"
 
 #include <gtest.h>
 
@@ -57,7 +57,7 @@ TEST(TMatrix, throws_when_set_element_with_negative_index)
   ASSERT_ANY_THROW(a[-1][-1]=5);
 }
 
-//TEST(TMatrix, throws_when_set_element_with_too_large_index)//пока не знаю дичь конкретная конечно
+//TEST(TMatrix, throws_when_set_element_with_too_large_index)//РїРѕРєР° РЅРµ Р·РЅР°СЋ
 //{
 //	TMatrix <int> a(MAX_MATRIX_SIZE);
 //	ASSERT_ANY_THROW(a[MAX_MATRIX_SIZE][MAX_MATRIX_SIZE] = 5);
