@@ -113,7 +113,7 @@ TEST(TVector, can_assign_vectors_of_different_size)
 	EXPECT_EQ(v1, v2);
 }
 
-TEST(TVector, compare_equal_vectors_return_true)//сам написал бля проверяй
+TEST(TVector, compare_equal_vectors_return_true)//сам написал проверяй
 {
 	TVector<int> tmp1(4), tmp2(4);
 	tmp1[0] = 5;
