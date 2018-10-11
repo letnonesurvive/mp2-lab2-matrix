@@ -115,7 +115,7 @@ TEST(TVector, can_assign_vectors_of_different_size)
 
 TEST(TVector, compare_equal_vectors_return_true)
 {
-	TVector<int> tmp1(4), tmp2(4);
+	TVector<float> tmp1(4), tmp2(4);
 	tmp1[0] = 5;
 	tmp2[0] = 5;
 	EXPECT_TRUE(tmp1==tmp2);

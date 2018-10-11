@@ -57,6 +57,8 @@ public:
   }
   friend ostream& operator<<(ostream &out, const TVector &v)
   {
+	  for (int i = 0; i < v.StartIndex; i++)
+		  out << '0' << ' ';
 	  for (int i = 0; i < v.Size; i++)
 	  {
 		  out << v.pVector[i] << ' ';
@@ -154,10 +156,10 @@ TVector<ValType>& TVector<ValType>::operator=(const TVector &v)
 template <class ValType> // прибавить скаляр
 TVector<ValType> TVector<ValType>::operator+(const ValType &val)
 {
-	TVector tmp = *this;
+	TVector tmp(*this);
 	for (int i = 0; i < this->Size; i++)
 	{
-		tmp[i] += val;
+		tmp.pVector[i] += val;
 	}
 	return tmp;
 } /*-------------------------------------------------------------------------*/
@@ -165,10 +167,10 @@ TVector<ValType> TVector<ValType>::operator+(const ValType &val)
 template <class ValType> // вычесть скаляр
 TVector<ValType> TVector<ValType>::operator-(const ValType &val)
 {
-	TVector tmp = *this;
+	TVector tmp(*this);
 	for (int i = 0; i < this->Size; i++)
 	{
-		tmp[i] -= val;
+		tmp.pVector[i] -= val;
 	}
 	return tmp;
 } /*-------------------------------------------------------------------------*/
@@ -176,10 +178,10 @@ TVector<ValType> TVector<ValType>::operator-(const ValType &val)
 template <class ValType> // умножить на скаляр
 TVector<ValType> TVector<ValType>::operator*(const ValType &val)
 {
-	TVector tmp = *this;
+	TVector tmp(*this);
 	for (int i = 0; i < this->Size; i++)
 	{
-		tmp[i] *= val;
+		tmp.pVector[i] *= val;
 	}
 	return tmp;
 } /*-------------------------------------------------------------------------*/
@@ -189,9 +191,9 @@ TVector<ValType> TVector<ValType>::operator+(const TVector<ValType> &v)
 {
 	if (Size == v.Size)
 	{
-		TVector tmp(Size);
+		TVector tmp(*this);
 		for (int i = 0; i < Size; i++)
-			tmp[i] = this->pVector[i] + v.pVector[i];
+			tmp.pVector[i] = tmp.pVector[i] + v.pVector[i];
 		return tmp;
 	}
 	else throw"different len";
@@ -202,9 +204,9 @@ TVector<ValType> TVector<ValType>::operator-(const TVector<ValType> &v)
 {
 	if (Size == v.Size)
 	{
-		TVector tmp(Size);
+		TVector tmp(*this);
 		for (int i = 0; i < Size; i++)
-			tmp[i] = this->pVector[i] - v.pVector[i];
+			tmp.pVector[i] =tmp.pVector[i] - v.pVector[i];
 		return tmp;
 	}
 	else throw"different len";
@@ -248,10 +250,6 @@ public:
   {
 		  for (int i = 0; i < mt.Size; i++)
 		  {
-			  for (int j = 0; j < i; j++)// цикл для отступа, сделал сдвиг так как предполагается что матрица верхнетреугольная
-			  {
-				  out << "  ";
-			  }
 			  out << mt.pVector[i] << endl;
 		  }
     return out;
@@ -328,10 +326,10 @@ TMatrix<ValType> TMatrix<ValType>::operator+(const TMatrix<ValType> &mt)
 {
 	if (this->Size == mt.Size)
 	{
-		TMatrix tmp(Size);
+		TMatrix tmp(*this);
 		for (int i = 0; i < mt.Size; i++)
 		{
-			tmp.pVector[i] = this->pVector[i] + mt.pVector[i];
+			tmp.pVector[i] = tmp.pVector[i] + mt.pVector[i];
 		}
 		return tmp;
 	}
@@ -343,10 +341,10 @@ TMatrix<ValType> TMatrix<ValType>::operator-(const TMatrix<ValType> &mt)
 {
 	if (this->Size == mt.Size)
 	{
-		TMatrix tmp(Size);
+		TMatrix tmp(*this);
 		for (int i = 0; i < mt.Size; i++)
 		{
-			tmp.pVector[i] = this->pVector[i] - mt.pVector[i];
+			tmp.pVector[i] = tmp.pVector[i] - mt.pVector[i];
 		}
 		return tmp;
 	}
